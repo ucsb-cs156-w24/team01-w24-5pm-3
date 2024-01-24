@@ -11,7 +11,7 @@ Lab instructions: <https://ucsb-cs156.github.io/w24/lab/team01.html>
 |Michael       | bigjr-mkkong| `LocationQueryService`      | `LocationController`      |
 |Chloe Ta      |             | `PublicHolidayQueryService` | `PublicHolidayController` |
 |Ben Richardson|    bwr02    | `TidesQueryService`         | `TidesController`         |
-|Sophia Tran   |             | `UniversityQueryService`    | `UniversityController`    |
+|Sophia Tran   | sophiattran | `UniversityQueryService`    | `UniversityController`    |
 |Animesh       |theanimated01| `ZipCodeQueryService`       | `ZipCodeController`       |
 ```
 
