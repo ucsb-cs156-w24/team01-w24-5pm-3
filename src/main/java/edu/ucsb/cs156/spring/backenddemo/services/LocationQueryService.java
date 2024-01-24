@@ -13,12 +13,14 @@ public class LocationQueryService {
     private final RestTemplate restTemplate;
 
     public LocationQueryService(RestTemplateBuilder restTemplateBuilder) {
+	//todo
         restTemplate = restTemplateBuilder.build();
     }
 
     public static final String ENDPOINT = "";
 
     public String getJSON(String location) throws HttpClientErrorException {
+	//todo
         return "";
     }
 }
