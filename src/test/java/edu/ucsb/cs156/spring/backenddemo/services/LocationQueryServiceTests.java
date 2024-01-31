@@ -25,7 +25,7 @@ public class LocationQueryServiceTests {
     public void test_getJSON() {
 
         String location = "Berlin";
-        String expectedURL = LocationQueryService.ENDPOINT.replace("{location}", distance);
+        String expectedURL = locationQueryService.ENDPOINT.replace("{location}", location);
 
         String fakeJsonResult = "{ \"fake\" : \"result\" }";
 
@@ -34,7 +34,7 @@ public class LocationQueryServiceTests {
                 .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
                 .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
 
-        String actualResult = earthquakeQueryService.getJSON(location);
+        String actualResult = locationQueryService.getJSON(location);
         assertEquals(fakeJsonResult, actualResult);
     }
 }
