@@ -2,9 +2,47 @@
 
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.ucsb.cs156.spring.backenddemo.services.EarthquakeQueryService;
+import edu.ucsb.cs156.spring.backenddemo.services.TidesQueryService;
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+
+@Tag(name=&quot;Tide Information from NOAA https://api.tidesandcurrents.noaa.gov/api/prod/&quot;)
+<span class="fc" id="L25">@Slf4j</span>
 @RestController
-<span class="fc" id="L7">public class TidesController {</span>
+@RequestMapping(&quot;/api/tides&quot;)
+<span class="fc" id="L28">public class TidesController {</span>
+
+<span class="fc" id="L30">    ObjectMapper mapper = new ObjectMapper();</span>
+
+    @Autowired
+    TidesQueryService tidesQueryService;
+
+    @Operation(summary=&quot;Get water level for date range, in local time.&quot;, description =&quot;For station id, see: https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1393&quot;)
+    @GetMapping(&quot;/get&quot;)
+    public ResponseEntity&lt;String&gt; getTides(
+        @Parameter(name=&quot;beginDate&quot;, description = &quot;beginDate in format yyyymmdd&quot;) @RequestParam String beginDate,
+        @Parameter(name=&quot;endDate&quot;, description = &quot;endDate in format yyyymmdd&quot;) @RequestParam String endDate,
+        @Parameter(name=&quot;station&quot;, description = &quot;station&quot;, example=&quot;9411340&quot;) @RequestParam String station
+    ) throws JsonProcessingException {
+<span class="fc" id="L42">        log.info(&quot;beginDateJson??={}, endDate={}, station={}&quot;, beginDate, endDate, station);</span>
+<span class="fc" id="L43">        String result = tidesQueryService.getJSON(beginDate, endDate, station);</span>
+<span class="fc" id="L44">        return ResponseEntity.ok().body(result);</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
