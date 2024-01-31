@@ -2,9 +2,43 @@
 
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.ucsb.cs156.spring.backenddemo.services.EarthquakeQueryService;
+import edu.ucsb.cs156.spring.backenddemo.services.ZipCodeQueryService;
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name=&quot;ZipCode info from https://api.zippopotam.us/&quot;)
+<span class="fc" id="L23">@Slf4j</span>
 @RestController
-<span class="fc" id="L7">public class ZipCodeController {</span>
+@RequestMapping(&quot;/api/zipcode&quot;)
+<span class="fc" id="L26">public class ZipCodeController {</span>
     
+<span class="fc" id="L28">    ObjectMapper mapper = new ObjectMapper();</span>
+
+    @Autowired
+    ZipCodeQueryService zipCodeQueryService;
+
+    @Operation(summary = &quot;Get info about a zipcode&quot;, description = &quot;JSON return format documented here: https://api.zippopotam.us/&quot;)
+    @GetMapping(&quot;/get&quot;)
+    public ResponseEntity&lt;String&gt; getZipCode(
+        @Parameter(name=&quot;zipcode&quot;, description=&quot;&quot;, example=&quot;93117&quot;) @RequestParam String zipcode
+    ) throws JsonProcessingException {
+<span class="fc" id="L38">        log.info(&quot;getZipCode: zipcode={}&quot;, zipcode);</span>
+<span class="fc" id="L39">        String result = zipCodeQueryService.getJSON(zipcode);</span>
+<span class="fc" id="L40">        return ResponseEntity.ok().body(result);</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
