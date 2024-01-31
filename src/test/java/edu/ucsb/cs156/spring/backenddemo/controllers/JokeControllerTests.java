@@ -31,7 +31,7 @@ public class JokeControllerTests {
     public void test_getRandomJoke() throws Exception {
     
         String fakeJsonResult = "{ \"joke\" : \"Why don't scientists trust atoms? Because they make up everything!\" }";
-        String category = "dad";
+        String category = "program";
         int numJokes = 1; // Assuming you want 1 joke
         when(mockJokeQueryService.getJSON(eq(category), eq(numJokes))).thenReturn(fakeJsonResult);
 
