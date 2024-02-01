@@ -18,7 +18,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = &quot;Random Jokes from a Joke API&quot;)
+@Tag(name = &quot;Jokes from https://v2.jokeapi.dev/&quot;)
 <span class="fc" id="L22">@Slf4j</span>
 @RestController
 @RequestMapping(&quot;/api/jokes&quot;)
@@ -29,17 +29,15 @@ import io.swagger.v3.oas.annotations.tags.Tag;
     @Autowired
     JokeQueryService jokeQueryService;
 
-    @Operation(summary = &quot;Get random jokes&quot;, description = &quot;Fetches a specified number of random jokes from an external joke API. Categories can include 'knock-knock', 'dad', 'general', etc.&quot;)
+    @Operation(summary = &quot;Get jokes for a given category and amount&quot;)
     @GetMapping(&quot;/get&quot;)
     public ResponseEntity&lt;String&gt; getRandomJokes(
-        @Parameter(name = &quot;category&quot;, description = &quot;Category of the joke&quot;, example = &quot;dad&quot;)
-        @RequestParam(required = false) String category,
-        @Parameter(name = &quot;numJokes&quot;, description = &quot;Number of jokes to fetch&quot;, example = &quot;3&quot;)
-        @RequestParam(required = false, defaultValue = &quot;1&quot;) int numJokes
+        @Parameter(name = &quot;category&quot;, description = &quot;category of the joke&quot;, example = &quot;Programming&quot;) @RequestParam(required = true) String category,
+        @Parameter(name = &quot;amount&quot;, description = &quot;amount of jokes to get&quot;, example = &quot;1&quot;) @RequestParam(required = true) String numJokes
     ) throws JsonProcessingException {
-<span class="fc" id="L40">        log.info(&quot;getRandomJokes: category={}, numJokes={}&quot;, category, numJokes);</span>
-<span class="fc" id="L41">        String result = jokeQueryService.getJSON(category, numJokes);</span>
-<span class="fc" id="L42">        return ResponseEntity.ok().body(result);</span>
+<span class="fc" id="L38">        log.info(&quot;getRandomJokes: category={}, amount={}&quot;, category, numJokes);</span>
+<span class="fc" id="L39">        String result = jokeQueryService.getJSON(category, numJokes);</span>
+<span class="fc" id="L40">        return ResponseEntity.ok().body(result);</span>
     }
 }
 

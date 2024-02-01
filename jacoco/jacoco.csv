@@ -7,11 +7,11 @@ team01,edu.ucsb.cs156.spring.backenddemo.controllers,EarthquakesController,0,27,
 team01,edu.ucsb.cs156.spring.backenddemo.controllers,LocationController,0,3,0,0,0,1,0,1,0,1
 team01,edu.ucsb.cs156.spring.backenddemo.controllers,CollegeSubredditsController,0,16,0,0,0,4,0,2,0,2
 team01,edu.ucsb.cs156.spring.backenddemo.controllers,CountryCodeController,0,25,0,0,0,6,0,3,0,3
-team01,edu.ucsb.cs156.spring.backenddemo.controllers,JokeController,0,28,0,0,0,6,0,3,0,3
+team01,edu.ucsb.cs156.spring.backenddemo.controllers,JokeController,0,27,0,0,0,6,0,3,0,3
 team01,edu.ucsb.cs156.spring.backenddemo.controllers,TidesController,0,40,0,0,0,6,0,3,0,3
 team01,edu.ucsb.cs156.spring.backenddemo.services,EarthquakeQueryService,0,64,0,0,0,15,0,3,0,3
 team01,edu.ucsb.cs156.spring.backenddemo.services,PublicHolidayQueryService,0,57,0,0,0,13,0,3,0,3
-team01,edu.ucsb.cs156.spring.backenddemo.services,JokeQueryService,0,53,0,0,0,12,0,3,0,3
+team01,edu.ucsb.cs156.spring.backenddemo.services,JokeQueryService,0,51,0,0,0,12,0,3,0,3
 team01,edu.ucsb.cs156.spring.backenddemo.services,CountryCodeQueryService,0,54,0,0,0,13,0,3,0,3
 team01,edu.ucsb.cs156.spring.backenddemo.services,ZipCodeQueryService,0,49,0,0,0,12,0,3,0,3
 team01,edu.ucsb.cs156.spring.backenddemo.services,TidesQueryService,0,70,0,0,0,13,0,3,0,3
