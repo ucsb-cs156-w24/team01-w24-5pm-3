@@ -34,9 +34,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
     public ResponseEntity&lt;String&gt; getLocation(
         @Parameter(name=&quot;location&quot;, description=&quot;Location of the place where program needs to get longtitude &amp; latitude&quot;, example=&quot;Berlin&quot;) @RequestParam String location
     ) throws JsonProcessingException {
-<span class="nc" id="L37">        log.info(&quot;getLocation: Location={}&quot;, location);</span>
-<span class="nc" id="L38">        String result = locationQueryService.getJSON(location);</span>
-<span class="nc" id="L39">        return ResponseEntity.ok().body(result);</span>
+<span class="fc" id="L37">        log.info(&quot;getLocation: Location={}&quot;, location);</span>
+<span class="fc" id="L38">        String result = locationQueryService.getJSON(location);</span>
+<span class="fc" id="L39">        return ResponseEntity.ok().body(result);</span>
     }
 
 }
