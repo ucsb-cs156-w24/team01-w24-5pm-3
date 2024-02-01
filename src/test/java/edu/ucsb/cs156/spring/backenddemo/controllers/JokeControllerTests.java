@@ -32,7 +32,7 @@ public class JokeControllerTests {
     
         String fakeJsonResult = "{ \"joke\" : \"Why don't scientists trust atoms? Because they make up everything!\" }";
         String category = "program";
-        int numJokes = 1; // Assuming you want 1 joke
+        String numJokes = "1"; // Assuming you want 1 joke
         when(mockJokeQueryService.getJSON(eq(category), eq(numJokes))).thenReturn(fakeJsonResult);
 
         String url = String.format("/api/jokes/get?category=%s&numJokes=%d", category, numJokes);
@@ -52,7 +52,7 @@ public class JokeControllerTests {
     
         String fakeJsonResult = "{ \"joke\" : \"Parallel lines have so much in common. It’s a shame they’ll never meet.\" }";
         String category = null; // No category specified
-        int numJokes = 1; // Assuming you want 1 joke
+        String numJokes = "1"; // Assuming you want 1 joke
         when(mockJokeQueryService.getJSON(eq(category), eq(numJokes))).thenReturn(fakeJsonResult);
 
         String url = String.format("/api/jokes/get?numJokes=%d", numJokes);
