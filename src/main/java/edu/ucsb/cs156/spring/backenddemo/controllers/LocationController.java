@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
-@Tag(name="Eation info from USGS")
+@Tag(name="Location info from USGS")
 @Slf4j
 @RestController
 @RequestMapping("/api/locations")
@@ -27,7 +27,7 @@ public class LocationController {
     ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
-    LocationQueryService locationQueryServBerlin;
+    LocationQueryService locationQueryService;
 
     @Operation(summary = "Get longitude & latitude from name of the location", description = "JSON return format documented here: https://nominatim.openstreetmap.org/search/search.php?q={location}&format=jsonv2")
     @GetMapping("/get")
@@ -35,7 +35,7 @@ public class LocationController {
         @Parameter(name="location", description="Location of the place where program needs to get longtitude & latitude", example="Berlin") @RequestParam String location
     ) throws JsonProcessingException {
         log.info("getLocation: Location={}", location);
-        String result = locationQueryServBerlin.getJSON(location);
+        String result = locationQueryService.getJSON(location);
         return ResponseEntity.ok().body(result);
     }
 
