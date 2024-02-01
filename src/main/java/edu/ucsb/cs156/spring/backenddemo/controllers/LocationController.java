@@ -29,10 +29,10 @@ public class LocationController {
     @Autowired
     LocationQueryService locationQueryService;
 
-    @Operation(summary = "Get longitude & latitude from name of the location", description = "JSON return format documented here: https://nominatim.openstreetmap.org/search/search.php?q={location}&format=jsonv2")
+    @Operation(summary = "Get list of locations that match a given location name", description = "Uses API documented here: https://nominatim.org/release-docs/develop/api/Search/")
     @GetMapping("/get")
     public ResponseEntity<String> getLocation(
-        @Parameter(name="location", description="Location of the place where program needs to get longtitude & latitude", example="Berlin") @RequestParam String location
+        @Parameter(name="location", description="name to search", example="Isla Vista") @RequestParam String location
     ) throws JsonProcessingException {
         log.info("getLocation: Location={}", location);
         String result = locationQueryService.getJSON(location);
