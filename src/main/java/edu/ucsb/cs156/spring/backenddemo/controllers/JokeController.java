@@ -29,14 +29,14 @@ public class JokeController {
     @Autowired
     JokeQueryService jokeQueryService;
 
-    @Operation(summary = "Get jokes for a given category and amount", description = "JSON return format documented here: https://v2.jokeapi.dev/")
+    @Operation(summary = "Get jokes for a given category and amount")
     @GetMapping("/get")
     public ResponseEntity<String> getJokes(
         @Parameter(name="category", description="category of joke", example="Programming") @RequestParam String category,
-        @Parameter(name="numJokes", description="amount of jokes to get", example="1") @RequestParam String numJokes
+        @Parameter(name="amount", description="amount of jokes to get", example="1") @RequestParam String amount
     ) throws JsonProcessingException {
-        log.info("getJokes: category={} numJokes={}", category, numJokes);
-        String result = jokeQueryService.getJSON(category, Integer.parseInt(numJokes));
+        log.info("getJokes: category={} numJokes={}", category, amount);
+        String result = jokeQueryService.getJSON(category, Integer.parseInt(amount));
         return ResponseEntity.ok().body(result);
     }
 }
