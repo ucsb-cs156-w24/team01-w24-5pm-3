@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
-@Tag(name=&quot;Location info from nominatim.org&quot;)
+@Tag(name=&quot;Location info from USGS&quot;)
 <span class="fc" id="L23">@Slf4j</span>
 @RestController
 @RequestMapping(&quot;/api/locations&quot;)
@@ -29,10 +29,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
     @Autowired
     LocationQueryService locationQueryService;
 
-    @Operation(summary = &quot;Get list of locations that match a given location name&quot;, description = &quot;Uses API documented here: https://nominatim.org/release-docs/develop/api/Search/&quot;)
+    @Operation(summary = &quot;Get longitude &amp; latitude from name of the location&quot;, description = &quot;JSON return format documented here: https://nominatim.openstreetmap.org/search/search.php?q={location}&amp;format=jsonv2&quot;)
     @GetMapping(&quot;/get&quot;)
     public ResponseEntity&lt;String&gt; getLocation(
-        @Parameter(name=&quot;location&quot;, description=&quot;name to search&quot;, example=&quot;Isla Vista&quot;) @RequestParam String location
+        @Parameter(name=&quot;location&quot;, description=&quot;Location of the place where program needs to get longtitude &amp; latitude&quot;, example=&quot;Berlin&quot;) @RequestParam String location
     ) throws JsonProcessingException {
 <span class="fc" id="L37">        log.info(&quot;getLocation: Location={}&quot;, location);</span>
 <span class="fc" id="L38">        String result = locationQueryService.getJSON(location);</span>
