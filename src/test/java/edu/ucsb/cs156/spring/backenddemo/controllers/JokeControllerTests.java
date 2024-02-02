@@ -32,10 +32,10 @@ public class JokeControllerTests {
     
         String fakeJsonResult="{ \"fake\" : \"result\" }";
         String category = "Pun";
-        int numJokes = 1; // Assuming you want 1 joke
-        when(mockJokeQueryService.getJSON(eq(category), eq(numJokes))).thenReturn(fakeJsonResult);
+        String amount = "1"; // Assuming you want 1 joke
+        when(mockJokeQueryService.getJSON(eq(category), eq(amount))).thenReturn(fakeJsonResult);
 
-        String url = String.format("/api/jokes/get?category=%s&numJokes=%d", category, numJokes);
+        String url = String.format("/api/jokes/get?category=%s&amount=%s", category, amount);
 
         MvcResult response = mockMvc
             .perform(get(url).contentType("application/json"))
