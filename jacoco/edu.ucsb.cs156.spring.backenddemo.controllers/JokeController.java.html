@@ -31,12 +31,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
     @Operation(summary = &quot;Get jokes for a given category and amount&quot;)
     @GetMapping(&quot;/get&quot;)
-    public ResponseEntity&lt;String&gt; getRandomJokes(
-        @Parameter(name = &quot;category&quot;, description = &quot;category of the joke&quot;, example = &quot;Programming&quot;) @RequestParam(required = true) String category,
-        @Parameter(name = &quot;amount&quot;, description = &quot;amount of jokes to get&quot;, example = &quot;1&quot;) @RequestParam(required = true) String numJokes
+    public ResponseEntity&lt;String&gt; getJokes(
+        @Parameter(name=&quot;category&quot;, description=&quot;category of joke&quot;, example=&quot;Programming&quot;) @RequestParam String category,
+        @Parameter(name=&quot;amount&quot;, description=&quot;amount of jokes to get&quot;, example=&quot;1&quot;) @RequestParam String amount
     ) throws JsonProcessingException {
-<span class="fc" id="L38">        log.info(&quot;getRandomJokes: category={}, amount={}&quot;, category, numJokes);</span>
-<span class="fc" id="L39">        String result = jokeQueryService.getJSON(category, numJokes);</span>
+<span class="fc" id="L38">        log.info(&quot;getJokes: category={} numJokes={}&quot;, category, amount);</span>
+<span class="fc" id="L39">        String result = jokeQueryService.getJSON(category, amount);</span>
 <span class="fc" id="L40">        return ResponseEntity.ok().body(result);</span>
     }
 }
