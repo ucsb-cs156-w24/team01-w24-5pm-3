@@ -30,12 +30,12 @@ public class JokeControllerTests {
     @Test
     public void test_getRandomJoke() throws Exception {
     
-        String fakeJsonResult = "{ \"joke\" : \"Why don't scientists trust atoms? Because they make up everything!\" }";
-        String category = "program";
-        String numJokes = "1"; // Assuming you want 1 joke
-        when(mockJokeQueryService.getJSON(eq(category), eq(numJokes))).thenReturn(fakeJsonResult);
+        String fakeJsonResult="{ \"fake\" : \"result\" }";
+        String category = "Pun";
+        String amount = "1"; // Assuming you want 1 joke
+        when(mockJokeQueryService.getJSON(eq(category), eq(amount))).thenReturn(fakeJsonResult);
 
-        String url = String.format("/api/jokes/get?category=%s&numJokes=%s", category, numJokes);
+        String url = String.format("/api/jokes/get?category=%s&amount=%s", category, amount);
 
         MvcResult response = mockMvc
             .perform(get(url).contentType("application/json"))

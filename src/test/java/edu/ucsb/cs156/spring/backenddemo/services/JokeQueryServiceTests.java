@@ -24,9 +24,9 @@ public class JokeQueryServiceTests {
     @Test
     public void test_getJSON() {
         String category = "Any";
-        String numJokes = "5";
+        String amount = "5";
         String expectedURL = JokeQueryService.ENDPOINT.replace("{category}", category)
-                                                     .replace("{numJokes}", numJokes);
+                                                     .replace("{numJokes}", amount);
 
         String fakeJsonResult = "{ \"fake\" : \"joke\" }";
 
@@ -35,7 +35,7 @@ public class JokeQueryServiceTests {
                                   .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
                                   .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
 
-        String actualResult = jokeQueryService.getJSON(category, numJokes);
+        String actualResult = jokeQueryService.getJSON(category, amount);
         assertEquals(fakeJsonResult, actualResult);
     }
 }
